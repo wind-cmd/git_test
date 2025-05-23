@@ -1,3 +1,4 @@
+package com.example.Collection;
 import java.util.*;
 
 public class Java01 {
