@@ -6,9 +6,11 @@ public class Person {
     int age;
 
     public Person() {
+        super();
     }
     // 构造方法名和类名相同，没有返回值，没有 void 关键字
     public Person(String name, int age) {
+        super();
         this.name = name;
         this.age = age; 
     }

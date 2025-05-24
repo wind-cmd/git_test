@@ -6,5 +6,5 @@ public:     公共的，可以被任何类访问
 
 ## this和super
 this:       当前类的对象
-super:      父类的引用
+super:      父类的构造方法
 
