@@ -1,4 +1,5 @@
-package com.example.OO.b;
+// 修改 package 声明为实际对应的包名
+package com.example.objectDemo.b;
 
 //父类
 public abstract class A {
