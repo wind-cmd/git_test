@@ -1,5 +1,13 @@
 package com.example.OO.b;
 
+/**
+ * 抽象类
+ * 抽象类是一种特殊的类，它不能被实例化，只能被继承。
+ * 抽象类可以包含抽象方法和非抽象方法。
+ * 抽象方法是一种没有实现的方法，只有方法的声明，没有方法的实现。
+ * 
+ * */
+
 public abstract class Person {
     String name;
     int age;

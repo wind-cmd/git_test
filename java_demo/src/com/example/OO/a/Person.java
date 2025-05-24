@@ -15,8 +15,7 @@ public class Person {
 
     public void run() {
         System.out.println("Running");
-    } // 补充缺失的右括号
-
+    }
     public void jump() {
         System.out.println("Jumping");
     }
