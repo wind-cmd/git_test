@@ -1,4 +1,4 @@
-package com.example.interfaceDemo.a;
+package com.example.interfaceDemo;
 
 public class A implements Person{
     @Override

@@ -1,4 +1,4 @@
-package com.example.interfaceDemo.a;
+package com.example.interfaceDemo;
 
 public interface Person {
     public static final int a = 100;
