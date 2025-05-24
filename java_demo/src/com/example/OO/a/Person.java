@@ -1,4 +1,4 @@
-package com.example.objectDemo.a;
+package com.example.OO.a;
 
 public class Person {
 

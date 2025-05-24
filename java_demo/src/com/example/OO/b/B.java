@@ -1,5 +1,10 @@
 package com.example.OO.b;
 
+/*
+ * 抽象类
+ * 抽象类不能被实例化，只能被继承
+ * 抽象类中可以有抽象方法，也可以有非抽象方法
+*/
 // 子类
 public class B extends A{
 

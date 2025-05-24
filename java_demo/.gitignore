@@ -1,0 +1,3 @@
+bin/
+# 忽略vscode配置文件
+.vscode/
