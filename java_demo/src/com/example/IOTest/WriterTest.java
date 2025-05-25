@@ -3,7 +3,7 @@ package com.example.IOTest;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-public class ReaderTest2 {
+public class WriterTest {
     public static void main(String[] args) {
         String Path = "E:\\Workspaces\\VSCode\\java_test\\git_test\\java_demo\\file.txt";
         FileWriter writer = null;

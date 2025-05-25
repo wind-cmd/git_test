@@ -10,10 +10,14 @@ public class ReaderTest {
         BufferedReader bufferedReader = null;
         try {
             reader = new FileReader("E:\\Workspaces\\VSCode\\java_test\\git_test\\java_demo\\file.txt");
-            bufferedReader = new BufferedReader(reader);
-            String s = "";
-            while ((s = bufferedReader.readLine()) != null) {
-                System.out.println(s);
+            // bufferedReader = new BufferedReader(reader);
+            // String s = "";
+            // while ((s = bufferedReader.readLine()) != null) {
+            //     System.out.println(s);
+            // }
+            int data;
+            while ((data = reader.read())!= -1) {
+                System.out.println((char)data);
             }
         } catch (Exception e) {
             e.printStackTrace();
