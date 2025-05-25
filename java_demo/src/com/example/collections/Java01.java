@@ -1,4 +1,4 @@
-package com.example.collectionss;
+package com.example.collections;
 
 import java.util.*;
 
