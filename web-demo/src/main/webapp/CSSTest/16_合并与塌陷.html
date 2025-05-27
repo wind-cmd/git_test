@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合并与塌陷</title>
+    <style>
+        .father {
+            height: 200px;
+            width: 200px;
+            background-color: yellow;
+
+            /* 方法1父级加入 */
+            /* overflow: hidden; */
+
+            /* 方法2父级加入border-top */
+            /* border-top: 1px solid red; */
+
+            /* 方法3父级使用padding-top，取消子级margin-top */
+            padding-top: 50px;
+            box-sizing: border-box;
+        }
+
+        .son {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            /* margin-top: 50px; */
+
+        }
+
+        .div1 {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            margin-top: 20px;
+        }
+
+        .div2 {
+            height: 100px;
+            width: 100px;
+            background-color: rgb(128, 0, 0);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="div1"></div>
+    <div class="div2"></div>
+</body>
+
+</html>

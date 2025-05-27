@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <style>
+        /* 去掉默认样式 */
+        /* *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
+        div {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            /* 内减模式，自动减掉pdding和border */
+            box-sizing: border-box;
+
+            /* 上右下左 */
+            padding: 10px;
+            /* padding: 10px 20px 30px 40px; */
+
+            /* padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+            padding-left: 40px; */
+
+            /* 四个方向border*/
+            border-top: 2px solid green;
+            border-bottom: 2px dotted #000;
+            border-right: 2px solid blue;
+
+            /* solid 实线 dashed 虚线 dotted 点线 */
+            /* border: 3px dotted blue; */
+
+
+            /* margin: 20px; */
+            /* 版心居中，必须有高度 */
+            margin: 20px auto;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>盒子模型</div>
+
+</body>
+
+</html>

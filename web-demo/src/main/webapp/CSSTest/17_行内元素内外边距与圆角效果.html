@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行内元素内外边距</title>
+    <style>
+        span {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+            line-height: 100px;
+            margin: 100px;
+        }
+
+        div {
+            height: 100px;
+            background-color: yellow;
+            margin: 0 auto;
+            /* 阴影 右边  下边  模糊度  尺寸  颜色  inset内阴影*/
+            box-shadow: 2px 2px 2px 2px #888888;
+            /* box-shadow: 2px 5px 10px 1px #888888; */
+        }
+
+        .div1 {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .div2 {
+            width: 200px;
+            border-radius: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <span>span 标签1</span><span>span 标签2</span>
+    <div class="div1"></div>
+    <div class="div2"></div>
+</body>
+
+</html>
