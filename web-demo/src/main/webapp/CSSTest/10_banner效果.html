@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner效果</title>
+    <style>
+        .banner {
+            height: 500px;
+            background-color: #f3f3f4;
+            background-image: url(../static/img/新闻详情.png);
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: contain;
+            /* 文字控制属性，继承给子集 */
+            text-align: right;
+            color: #333333;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 100px;
+        }
+
+        .banner p {
+            font-size: 20px;
+        }
+
+        .banner a {
+            width: 125px;
+            height: 40px;
+            background-color: #f06136;
+            /* 转块级元素无法右对齐，因为独占一行 */
+            display: inline-block;
+            color: #ffffff;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <h2>让创造产生价值</h2>
+        <p>我们希望小游戏平台可以提供无限的可能性</p>
+        <a href="#">我要报名</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>层叠性与优先级</title>
+    <style>
+        /* 层叠性：
+        1. 相同属性会覆盖：后边的CSS会覆盖前边的CSS
+        2. 不同属性会叠加：不同的CSS属性都生效 */
+        div {
+            color: red;
+            font-weight: 700;
+        }
+
+        div {
+            color: blue;
+            font-size: 30px;
+        }
+
+        /* 优先级：也交权重一个标签用了多种选择器时，基于不同类的选择器的匹配规则。
+        规则：通配符选择器 < 标签选择器 < 类选择器 < id选择器 < 行内样式<！important */
+        #pid {
+            color: orange;
+        }
+
+        .pclass {
+            /* color: pink; */
+            /* !import提权，提高权重，优先级最高，慎用！ */
+            color: pink !important;
+        }
+
+        p {
+            color: green;
+        }
+
+        * {
+            color: greenyellow;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div>div标签</div>
+    <p id="pid" class="pclass">p标签</p>
+    <p id="pid" class="pclass" style="color:black;">p标签</p>
+
+
+</body>
+
+</html>
