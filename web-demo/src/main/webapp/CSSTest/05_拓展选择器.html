@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拓展选择器</title>
+    <style>
+        /* 链接伪类选择器 */
+        /* 访问前 */
+        a:link {
+            color: red;
+        }
+
+        /* 访问过 */
+        a:visited {
+            color: green;
+        }
+
+        /* 鼠标悬浮 */
+        a:hover {
+            color: blue;
+        }
+
+        /* 点击时 */
+        a:active {
+            color: pink;
+        }
+
+        .box:hover {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+
+        /* 后代选择器，包含孙子 */
+        div span {
+            color: red;
+        }
+
+        /* 儿子选择器，只包含儿子 */
+        /* div>span{
+        color: blue;  
+       } */
+
+        /* 并集选择器 */
+        div,
+        span,
+        p {
+            font-size: 50px;
+        }
+
+        /* 交集选择器，选中同时满足多个条件的元素 */
+        p.box2 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#">a标签，味蕾选择器</a>
+    <div class="box">div标签</div>
+    <div><span>这是一段儿子</span>
+        <p>这是段落文字<span>这是孙子</span></p>
+    </div>
+    <p class="box2">p标签class=box2</p>
+    <p>p标签</p>
+    <div class="box2">div标签class=box2</div>
+</body>
+
+</html>
