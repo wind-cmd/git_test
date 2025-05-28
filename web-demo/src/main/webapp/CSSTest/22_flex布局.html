@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        /* 弹性容器 */
+        .box {
+            display: flex;
+
+            /* 主轴水平排列 */
+            /* justify-content: start; */
+            /* justify-content: end; */
+            /* justify-content: center; */
+            /* 剩余空间分配为间距，盒子之间间距相等 */
+            /* justify-content: space-between; */
+            /* 剩余空间分配为间距，盒子之间间距相等，
+            盒子与容器之间间距为盒子之间间距的一半 */
+            /* justify-content: space-around; */
+            /* 盒子与盒子，盒子与容器间距都相等 */
+            /* justify-content: space-evenly; */
+
+
+            /* 副轴垂直排列 */
+            /* 默认拉伸填满，如果盒子设置了尺寸，不拉伸。如果盒子没设置尺寸，默认拉伸。 */
+            /* align-items: stretch; */
+            /* 盒子在副轴方向居中对齐 */
+            /* align-items: center; */
+            /* 盒子在副轴方向底部对齐 */
+            /* align-items: flex-end; */
+            /* 盒子在副轴方向顶部对齐 */
+            /* align-items: flex-start; */
+
+
+            /* 修改主轴方向 */
+            /* 主轴从上向下 */
+            /* flex-direction: column; */
+
+
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+        /* 弹性盒子，沿着主轴方向排列 */
+        .box div {
+            /* margin: 50px;
+            float: left; */
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        /* 设置单个弹性盒子 */
+        /* .box div:nth-child(2) {
+            align-self: flex-end;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <!-- <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div> -->
+    </div>
+</body>
+
+</html>

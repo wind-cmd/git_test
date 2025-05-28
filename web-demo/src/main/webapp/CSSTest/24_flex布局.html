@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        .box {
+            display: flex;
+            justify-content:space-between;
+            /* 弹性盒子不在挤压同一行，自动换行 */
+            flex-wrap: wrap;
+
+            /* 行对齐方式，对单行盒子不生效 */
+            align-content: space-between;
+            /* align-content: space-around; */
+            /* align-content: space-evenly; */
+            /* align-content: center; */
+            /* align-content: flex-start; */
+            /* align-content: flex-end; */
+
+
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+        .box div {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <!-- <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div> -->
+    </div>
+</body>
+
+</html>
