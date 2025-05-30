@@ -43,7 +43,7 @@ public class HelloHttpServlet extends HttpServlet {
         // 响应重定向
         // resp.setStatus(302);
         // resp.setHeader("Location", "/helloHttp2");
-         resp.sendRedirect("/web-demo/helloHttp2");
+         resp.sendRedirect("/web_demo/helloHttp2");
     }
 
     @Override
