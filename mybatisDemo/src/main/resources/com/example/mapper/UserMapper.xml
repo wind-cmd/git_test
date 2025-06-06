@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+<!--    添加用户-->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user (username,password,age,class_name) values (#{userName},#{passWord},#{age},#{className})
+    </insert>
+<!--    修改用户-->
+    <update id="updateUser">update user
+        <set>
+            <if test="userName != null and userName != ''">
+                username = #{userName},
+            </if>
+            <if test="passWord != null and passWord != ''">
+                password = #{passWord},
+            </if>
+            <if test="age != null and age != ''">
+                age = #{age},
+            </if>
+            <if test="className != null and className != ''">
+                class_name = #{className}
+            </if>
+        </set>
+            where id = #{id}
+    </update>
+<!--    删除用户-->
+    <delete id="deleteUser">
+delete from user where id = #{id}
+    </delete>
+<!--    批量删除用户-->
+    <delete id="deleteAllUsers">
+        delete from user where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+    <!--    查询用户-->
+    <select id="selectAll" resultType="user">
+        select * from user
+    </select>
+</mapper>
