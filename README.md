@@ -25,6 +25,6 @@ ajax,axios,json数据传输。
 |  /web/filter |  /webapp |  配置过滤器 |
 | /web//servletTest  | /webapp/servletTest  |  servlet实现用户登录注册|
 | /web/servlet  | /webapp/*.jsp  |  mvc模式下jsp,servlet，mybatis实现增删改查 |
-| /web/servlet/LoginServlet&TegisterServlet  | /webapp/login.jsp&register.jsp   |  cookie，session实现记住用户 |
+| /web/servlet/LoginServlet&RegisterServlet  | /webapp/login.jsp&register.jsp   |  cookie，session实现记住用户 |
 |/web/servlet/AjaxServlet|/webapp/ajaxTest|验证用户是否存在|
 | /web/jsonTestServlet  |  /webapp/jsonTest |  练习json数据传输，通过axios使前后端分离 |
