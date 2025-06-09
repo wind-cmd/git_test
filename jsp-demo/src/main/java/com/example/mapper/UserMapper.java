@@ -1,8 +1,7 @@
 package com.example.mapper;
 
 import com.example.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -11,6 +10,8 @@ public interface UserMapper {
     //用户登录
     User login(@Param("userNo") String userNo, @Param("passWord") String passWord);
     //根据学号查询用户
+    @Select("select * from user where userno = #{userNo}")
+    @ResultType(User.class)
     User selectByUserNo(@Param("userNo") String userNo);
     //注册
     @Insert("insert into user (userno,username,password)values(#{userNo},#{userNo},#{passWord})")

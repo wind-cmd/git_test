@@ -1,4 +1,4 @@
-package com.example.web;
+package com.example.web.servlet;
 
 import com.example.pojo.User;
 import com.example.service.UserService;

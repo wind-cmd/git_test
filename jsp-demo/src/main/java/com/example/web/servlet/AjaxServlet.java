@@ -1,4 +1,4 @@
-package com.example.web;
+package com.example.web.servlet;
 
 import com.example.service.UserService;
 import jakarta.servlet.ServletException;

@@ -44,8 +44,4 @@ delete from user where id = #{id}
     <select id="login" resultType="user">
         select * from user where userno = #{userNo} and password = #{passWord}
     </select>
-<!--    查询学号是否存在-->
-    <select id="selectByUserNo" resultType="User">
-        select * from user where userno = #{userNo}
-    </select>
 </mapper>

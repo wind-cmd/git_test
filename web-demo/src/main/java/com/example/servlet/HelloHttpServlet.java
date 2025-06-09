@@ -36,20 +36,21 @@ public class HelloHttpServlet extends HttpServlet {
         // request.getParameter("");
         // request.getParameterNames();
 
-        // 重定向
-//        request.setAttribute("test", "testAttribute");
-//        request.getRequestDispatcher("/helloHttp2").forward(request, resp);
+        // 转发到helloHttp2
+        // 转发到helloHttp2时，request对象会被共享，不会丢失任何数据
+        // request.setAttribute("test", "testAttribute");
+        // request.getRequestDispatcher("/helloHttp2").forward(request, resp);
 
-        // 响应重定向
+        // 响应重定向到helloHttp2
+        // 重定向到helloHttp2时，request对象会丢失，需要重新获取数据
         // resp.setStatus(302);
         // resp.setHeader("Location", "/helloHttp2");
-         resp.sendRedirect("/web_demo/helloHttp2");
+        resp.sendRedirect("/web_demo/helloHttp2");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("POST...");
-        // 获取请求体
+        this.doGet(req, resp);
         // 字符流
         // BufferedReader br = req.getReader();
         // 字节流

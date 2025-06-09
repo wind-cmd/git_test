@@ -1,4 +1,4 @@
-package com.example.servletTest;
+package com.example.web.servletTest;
 
 import com.example.mapper.UserMapper;
 import com.example.pojo.User;

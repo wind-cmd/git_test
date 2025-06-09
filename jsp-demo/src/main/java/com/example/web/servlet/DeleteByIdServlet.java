@@ -1,6 +1,5 @@
-package com.example.web;
+package com.example.web.servlet;
 
-import com.example.pojo.Brand;
 import com.example.service.BrandService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

@@ -1,4 +1,4 @@
-package com.example.web;
+package com.example.web.servlet;
 
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
@@ -10,8 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 @WebServlet("/CheckCode")

@@ -18,11 +18,71 @@
 </head>
 <body>
     <div class="login">
-        <form action="/register"method="get">
-            <input type="text" name="userno" placeholder="学号" required><br><br>
+        <form action="/ajaxTest"method="get">
+            <input type="text" id="userno" name="userno" placeholder="学号" required><br><br>
+            <div id="myDiv" style="display: none">用户名已存在</div>
             <input type="password" name="password" placeholder="密码" required><br><br>
             <input type="submit" value="注册">
         </form>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.getElementById("userno").addEventListener("blur",function () {
+        //获取学号
+        var userno = this.value;
+        // axios({
+        //     method:"get",
+        //     url:"/AjaxServlet?userno="+userno,
+        // }).then(function (resp) {
+        //     if(resp.data == true){
+        //         //不存在，隐藏
+        //         document.getElementById("myDiv").style.display = 'none';
+        //     }else{
+        //         //已存在，显示
+        //         document.getElementById("myDiv").style.display = '';
+        //     }
+        // })
+    })
+
+</script>
+
+<script>
+    //1.通过ajax
+    document.getElementById("").onblur = function () {
+        //发送ajax请求
+
+        //获取学号
+        var userno = this.value;
+
+        //创建核心对象
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        //发送请求
+        xmlhttp.open("GET","/AjaxServlet?userno="+userno);
+        xmlhttp.send();
+
+        //获取响应
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                if(this.responseText == "true"){
+                    //不存在，隐藏
+                    document.getElementById("myDiv").style.display = 'none';
+                }else{
+                    //已存在，显示
+                    document.getElementById("myDiv").style.display = '';
+                }
+            }
+        }
+    }
+</script>
 </html>
