@@ -19,9 +19,10 @@ public class JsonAddBrandServlet extends HttpServlet {
         //接收数据
         BufferedReader reader = req.getReader();
         String json = reader.readLine();
-
+        System.out.println(json);
 
         Brand brand = JSON.parseObject(json, Brand.class);
+        System.out.println(brand);
 
         BrandService brandService = new BrandService();
         brandService.addBrand(brand);

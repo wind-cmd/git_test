@@ -7,4 +7,18 @@
         <result property="brandName" column="brand_name"/>
         <result property="companyName" column="company_name"/>
     </resultMap>
+    <delete id="deleteBrands">
+        delete from tb_brand where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="selectByForm" resultMap="brandResultMap">
+        select * from tb_brand
+        <where>
+            <if test="status != null">status = #{status}</if>
+            <if test="brandName != null and brandName != ''">and brand_name = #{brandName}</if>
+            <if test="companyName != null and companyName != ''">and company_name = #{companyName}</if>
+        </where>
+    </select>
 </mapper>

@@ -1,8 +1,6 @@
 package com.example.web.jsonTestServlet;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.example.pojo.Brand;
 import com.example.service.BrandService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,33 +12,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/json/selectAll")
-public class JsonSelectAllServlet extends HttpServlet {
-
+@WebServlet("/json/deleteBrand")
+public class VueDeleteServlet extends HttpServlet {
     BrandService brandService = new BrandService();
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-
-        //接收数据
+        //接受参数
         BufferedReader reader = req.getReader();
         String json = reader.readLine();
+        //解析json
+        List<Integer> ids= JSON.parseArray(json, Integer.class);
 
-        Brand brand =  JSON.parseObject(json,Brand.class);
-        List<Brand> brands = brandService.selectByForm(brand);
-        String jsonString = JSONObject.toJSONString(brands);
+        brandService.deleteBrands(ids);
 
-
-
-        //与jsonTest配合，直接查询所有数据，没有筛选条件
-//        List<Brand> brandss= brandService.selectAllBrand();
-
-        System.out.println(jsonString);
-        // 响应输出
-        resp.setContentType("application/json;charset=UTF-8");
-        resp.getWriter().write(jsonString);
+        //响应成功
+        resp.getWriter().print("success");
     }
 
     @Override

@@ -33,6 +33,18 @@ public class BrandService {
         session.close();
         return brand;
     }
+
+    /**
+     * 查询所有
+     * @return
+     */
+    public List<Brand> selectByForm(Brand brand) {
+        SqlSession session = factory.openSession();
+        BrandMapper brandMapper = session.getMapper(BrandMapper.class);
+        List<Brand> brands = brandMapper.selectByForm(brand);
+        session.close();
+        return brands;
+    }
     /**
      * 添加
      */
@@ -68,4 +80,15 @@ public class BrandService {
         session.commit();
         session.close();
     }
+    /**
+     * 通过id删除多个
+     */
+    public void deleteBrands(List<Integer> ids) {
+        SqlSession session = factory.openSession();
+        BrandMapper brandMapper = session.getMapper(BrandMapper.class);
+        brandMapper.deleteBrands(ids);
+        session.commit();
+        session.close();
+    }
+
 }

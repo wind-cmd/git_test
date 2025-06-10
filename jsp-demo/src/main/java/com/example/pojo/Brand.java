@@ -1,18 +1,18 @@
 package com.example.pojo;
 
 public class Brand {
-    private int id;
+    private Integer id;
     private String brandName;
     private String companyName;
     private String description;
-    private int status;
-    private int ordered;
+    private Integer status;
+    private Integer ordered;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,19 +40,19 @@ public class Brand {
         this.description = description;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public int getOrdered() {
+    public Integer getOrdered() {
         return ordered;
     }
 
-    public void setOrdered(int ordered) {
+    public void setOrdered(Integer ordered) {
         this.ordered = ordered;
     }
 

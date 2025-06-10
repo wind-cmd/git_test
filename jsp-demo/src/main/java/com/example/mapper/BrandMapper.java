@@ -22,6 +22,10 @@ public interface BrandMapper {
     Brand selectById(int id);
 
     /**
+     * 通过form表单查询
+     */
+    List<Brand> selectByForm(Brand brand);
+    /**
      * 添加
      */
     @Insert("insert into tb_brand values(null,#{brandName},#{companyName},#{ordered},#{description},#{status})")
@@ -38,4 +42,11 @@ public interface BrandMapper {
      */
     @Delete("delete from tb_brand where id = #{id}")
     void deleteBrand(int id);
+
+    /**
+     * 删除多个
+     * @param ids
+     */
+    void deleteBrands(@Param("ids") List<Integer> ids);
+
 }
