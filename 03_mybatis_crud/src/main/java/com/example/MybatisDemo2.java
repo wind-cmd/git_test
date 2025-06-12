@@ -38,7 +38,7 @@ public class MybatisDemo2 {
            ScoreMapper scoreMapper = session.getMapper(ScoreMapper.class);
            List<Score> scores = scoreMapper.selectOne(1);
            System.out.println(scores);
-
+           
             //按照科目和用户id查询分数
 //            ScoreMapper scoreMapper = session.getMapper(ScoreMapper.class);
 //            List<Score> scores = scoreMapper.selectByCondition(1,1);
