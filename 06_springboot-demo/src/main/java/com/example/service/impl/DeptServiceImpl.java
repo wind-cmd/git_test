@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.example.controller.DeptController;
 import com.example.mapper.DeptMapper;
 import com.example.pojo.Dept;
@@ -16,9 +14,9 @@ import com.example.service.DeptService;
 
 @Service
 public class DeptServiceImpl implements DeptService {
-    private static final Logger logger = LoggerFactory.getLogger(DeptController.class);
 
     private final DeptMapper deptMapper;
+    private static final Logger logger = LoggerFactory.getLogger(DeptController.class);
 
     @Autowired
     public DeptServiceImpl(DeptMapper deptMapper) {

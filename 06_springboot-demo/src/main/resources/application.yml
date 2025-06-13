@@ -14,5 +14,7 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #驼峰命名
     map-underscore-to-camel-case: true
-    #xml配置文件位置
-  # mapper-locations: classpath:mapper/*.xml
+  #xml配置文件位置
+  mapper-locations: classpath:mapper/*.xml
+  #起别名包
+  type-aliases-package: com.example.pojo
