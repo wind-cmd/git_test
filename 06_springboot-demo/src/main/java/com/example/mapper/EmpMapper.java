@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
@@ -38,5 +39,13 @@ public interface EmpMapper {
 
     // 批量删除员工
     void deleteByIds(List<Integer> ids);
+
+    // 根据id查询员工
+    @Select("select id, username, name, phone, gender, image, job, salary, entry_date, dept_id, create_time, update_time"
+            + " from emp where id = #{id}")
+    Emp selectById(Integer id);
+
+    // 根据id修改员工信息
+    void updateById(Emp emp);
 
 }

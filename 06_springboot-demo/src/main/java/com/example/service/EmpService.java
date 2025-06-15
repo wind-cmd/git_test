@@ -20,4 +20,10 @@ public interface EmpService {
 
     //删除多个员工
     void deleteByIds(List<Integer> ids);
+
+    //根据id查询员工
+    Emp selectById(Integer id);
+
+    //修改员工信息
+    void updateById(Emp emp);
 }

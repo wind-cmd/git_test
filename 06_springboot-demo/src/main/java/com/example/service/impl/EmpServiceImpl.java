@@ -53,11 +53,11 @@ public class EmpServiceImpl implements EmpService {
         PageHelper.startPage(empQueryParam.getPage(), empQueryParam.getPageSize());
         List<Emp> rows = empMapper.list(empQueryParam);
 
-        //查询结果变为Page对象，获取总记录数
+        // 查询结果变为Page对象，获取总记录数
         Page<Emp> p = (Page<Emp>) rows;
         Long total = p.getTotal();
 
-        //封装结果返回
+        // 封装结果返回
         PageResult<Emp> pageResult = new PageResult<>(total, rows);
         return pageResult;
     }
@@ -104,5 +104,33 @@ public class EmpServiceImpl implements EmpService {
     public void deleteByIds(List<Integer> ids) {
         empMapper.deleteByIds(ids);
         empExprMapper.deleteByEmpIds(ids);
+    }
+
+    // 根据id查询员工
+    @Override
+    public Emp selectById(Integer id) {
+        Emp emp = empMapper.selectById(id);
+        emp.setExprList(empExprMapper.selectByEmpId(id));
+        return emp;
+    }
+
+    // 根据id修改员工信息
+    @Transactional(rollbackFor = { Exception.class })
+    @Override
+    public void updateById(Emp emp) {
+        // 1.修改员工基本信息
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.updateById(emp);
+        // 2.修改员工工作经历
+        //先删除原来的，
+        empExprMapper.deleteByEmpIds(List.of(emp.getId()));
+        //给工作经历赋值员工id，因为新增的员工id为空。
+        List<EmpExpr> exprList = emp.getExprList();
+        if (!exprList.isEmpty()) {
+            exprList.forEach(empExpr -> {
+                empExpr.setEmpId(emp.getId());
+            });
+        }
+        empExprMapper.add(emp.getExprList());
     }
 }
