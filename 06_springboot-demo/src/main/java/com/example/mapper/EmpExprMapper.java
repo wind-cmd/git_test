@@ -12,4 +12,7 @@ public interface EmpExprMapper {
     //添加工作经历
     void add(List<EmpExpr> exprList);
 
+    //删除员工工作经历
+    void deleteByEmpIds(List<Integer> ids);
+
 }

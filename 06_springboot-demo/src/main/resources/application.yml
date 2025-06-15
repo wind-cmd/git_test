@@ -6,20 +6,32 @@ spring:
     url: jdbc:mysql://localhost:3306/tlias?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
+  # 上传文件大小限制
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 
+# mybatis配置
 mybatis:
-  #mybatis配置
   configuration:
-    #日志输出
+    # 日志输出
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    #驼峰命名
+    # 驼峰命名
     map-underscore-to-camel-case: true
-  #xml配置文件位置
+  # xml配置文件位置
   mapper-locations: classpath:mapper/*.xml
-  #起别名包
+  # 起别名包
   type-aliases-package: com.example.pojo
 
 # 配置事务管理日志级别
 logging:
   level:
     '[org.springframework.jdbc.support.JdbcTransactionManager]': debug
+
+#阿里云OSS
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: web-aaaaaa
+    region: cn-beijing

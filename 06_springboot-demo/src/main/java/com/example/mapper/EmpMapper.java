@@ -15,12 +15,6 @@ public interface EmpMapper {
     // 条件查询员工
     List<Emp> list(EmpQueryParam empQueryParam);
 
-    // 添加员工
-    @Options(useGeneratedKeys = true, keyProperty = "id")//返回主键id赋值给emp对象，可直接get方法获取。
-    @Insert("insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time) "
-            + "values(#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
-    void add(Emp emp);
-
     /**
      * 统计员工数量
      */
@@ -35,5 +29,14 @@ public interface EmpMapper {
     // "order by e.update_time desc" +
     // " limit #{start},#{pageSize}")
     // List<Emp> page(Integer start, Integer pageSize);
+
+    // 添加员工
+    @Options(useGeneratedKeys = true, keyProperty = "id") // 返回主键id赋值给emp对象，可直接get方法获取。
+    @Insert("insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time) "
+            + "values(#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
+    void add(Emp emp);
+
+    // 批量删除员工
+    void deleteByIds(List<Integer> ids);
 
 }

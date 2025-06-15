@@ -22,13 +22,15 @@ import com.example.service.EmpService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
 
     private final EmpMapper empMapper;
     private final EmpExprMapper empExprMapper;
     private final EmpLogService empLogService;
-    private static final Logger logger = LoggerFactory.getLogger(EmpServiceImpl.class);
 
     @Autowired
     public EmpServiceImpl(EmpMapper empMapper, EmpExprMapper empExprMapper, EmpLogService empLogService) {
@@ -51,11 +53,11 @@ public class EmpServiceImpl implements EmpService {
         PageHelper.startPage(empQueryParam.getPage(), empQueryParam.getPageSize());
         List<Emp> rows = empMapper.list(empQueryParam);
 
+        //查询结果变为Page对象，获取总记录数
         Page<Emp> p = (Page<Emp>) rows;
         Long total = p.getTotal();
 
-        logger.info("员工查询结果: 总记录数 = {}, 当前页数据 = {}", total, rows);
-
+        //封装结果返回
         PageResult<Emp> pageResult = new PageResult<>(total, rows);
         return pageResult;
     }
@@ -92,5 +94,15 @@ public class EmpServiceImpl implements EmpService {
             EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "新增员工：" + emp);
             empLogService.insertLog(empLog);
         }
+    }
+
+    /**
+     * 删除员工，删除员工工作经历
+     */
+    @Transactional(rollbackFor = { Exception.class })
+    @Override
+    public void deleteByIds(List<Integer> ids) {
+        empMapper.deleteByIds(ids);
+        empExprMapper.deleteByEmpIds(ids);
     }
 }
