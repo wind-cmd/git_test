@@ -68,7 +68,7 @@ public class EmpServiceImpl implements EmpService {
      */
     @Transactional(rollbackFor = { Exception.class })
     @Override
-    public void save(Emp emp) {
+    public void save(Emp emp) throws Exception {
 
         try { // 1.存员工基本信息
               // 设置时间员工创建时间，修改时间
@@ -87,8 +87,6 @@ public class EmpServiceImpl implements EmpService {
                 // 2.保存员工经历
                 empExprMapper.add(emp.getExprList());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             // 3.记录操作日志
             EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "新增员工：" + emp);
@@ -122,9 +120,9 @@ public class EmpServiceImpl implements EmpService {
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.updateById(emp);
         // 2.修改员工工作经历
-        //先删除原来的，
+        // 先删除原来的，
         empExprMapper.deleteByEmpIds(List.of(emp.getId()));
-        //给工作经历赋值员工id，因为新增的员工id为空。
+        // 给工作经历赋值员工id，因为新增的员工id为空。
         List<EmpExpr> exprList = emp.getExprList();
         if (!exprList.isEmpty()) {
             exprList.forEach(empExpr -> {
