@@ -70,4 +70,23 @@
          #{id}
         </foreach>
     </select>
+
+    <!-- 统计各个职位的员工人数 -->
+    <select id="empJobData">
+        SELECT 
+        case 
+            when job = 1 then'班主任'
+            when job = 2 then'讲师'
+            when job = 3 then'学工主管'
+            when job = 4 then'教研主管'
+            when job = 5 then'咨询师'
+            else '其他'
+            end as job,
+        COUNT(*) as data FROM emp 
+        group by job order by data;
+    </select>
+    <!-- 统计员工性别 -->
+    <select id="empGenderData">
+        SELECT if(gender=1, '男', '女') as name, COUNT(*) as value FROM emp GROUP BY gender;
+    </select>
 </mapper>

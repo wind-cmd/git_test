@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -50,5 +51,11 @@ public interface EmpMapper {
 
         // 根据id修改员工信息
         void updateById(Emp emp);
+
+        //统计各个职位的员工人数
+        List<Map<String, Object>> empJobData();
+
+        //统计男女员工人数
+        List<Map<String, Object>> empGenderData();
 
 }
