@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -19,6 +20,7 @@ import com.example.pojo.EmpQueryParam;
 import com.example.pojo.PageResult;
 import com.example.service.EmpLogService;
 import com.example.service.EmpService;
+import com.example.utils.AliyunOSSOperator;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
@@ -31,12 +33,15 @@ public class EmpServiceImpl implements EmpService {
     private final EmpMapper empMapper;
     private final EmpExprMapper empExprMapper;
     private final EmpLogService empLogService;
+    private final AliyunOSSOperator aliyunOSSOperator;
 
     @Autowired
-    public EmpServiceImpl(EmpMapper empMapper, EmpExprMapper empExprMapper, EmpLogService empLogService) {
+    public EmpServiceImpl(EmpMapper empMapper, EmpExprMapper empExprMapper, EmpLogService empLogService,
+            AliyunOSSOperator aliyunOSSOperator) {
         this.empMapper = empMapper;
         this.empExprMapper = empExprMapper;
         this.empLogService = empLogService;
+        this.aliyunOSSOperator = aliyunOSSOperator;
     }
 
     // public PageResult<Emp> page(Integer page, Integer pageSize, String name,
@@ -96,11 +101,25 @@ public class EmpServiceImpl implements EmpService {
 
     /**
      * 删除员工，删除员工工作经历
+     * 
+     * @throws Exception
      */
     @Transactional(rollbackFor = { Exception.class })
     @Override
-    public void deleteByIds(List<Integer> ids) {
+    public void deleteByIds(List<Integer> ids) throws Exception {
+        // 获取每个员工的OSS文件路径
+        List<String> paths = empMapper.selectByIds(ids)
+                .stream().map(Emp::getImage)
+                .filter(image -> image != null && !image.isEmpty())
+                .toList();
+        log.info("要删除的文件目录：{}", paths);
+
+        // 删除员工信息
         empMapper.deleteByIds(ids);
+
+        // 删除OSS文件
+        aliyunOSSOperator.delete(paths);
+        // 删除员工工作经历
         empExprMapper.deleteByEmpIds(ids);
     }
 

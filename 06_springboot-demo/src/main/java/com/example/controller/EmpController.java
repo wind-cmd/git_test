@@ -58,10 +58,11 @@ public class EmpController {
 
     /**
      * 批量删除员工
+     * @throws Exception 
      */
 
     @DeleteMapping
-    public Result deleteByIds(@RequestParam List<Integer> ids) {
+    public Result deleteByIds(@RequestParam List<Integer> ids) throws Exception {
         log.info("删除员工：{}", ids);
         empService.deleteByIds(ids);
         return Result.success();

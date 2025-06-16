@@ -40,5 +40,4 @@ public class UplodController {
         }
         return Result.error("上传文件失败！");
     }
-
 }

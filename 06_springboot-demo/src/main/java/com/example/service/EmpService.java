@@ -19,7 +19,7 @@ public interface EmpService {
     void save(Emp emp) throws Exception;
 
     //删除多个员工
-    void deleteByIds(List<Integer> ids);
+    void deleteByIds(List<Integer> ids) throws Exception;
 
     //根据id查询员工
     Emp selectById(Integer id);
