@@ -141,12 +141,12 @@ public class AliyunOSSOperator {
             DeleteObjectsResult deleteObjectsResult = ossClient
                     .deleteObjects(new DeleteObjectsRequest(bucketName).withKeys(newList)
                             .withEncodingType("url"));
+            // 获取删除的文件列表
             List<String> deletedObjects = deleteObjectsResult.getDeletedObjects();
             for (String obj : deletedObjects) {
                 String deleteObj = URLDecoder.decode(obj, "UTF-8");
                 boolean exists = ossClient.doesObjectExist(bucketName, deleteObj);
                 System.out.println("文件：" + deleteObj + " 是否存在: " + exists);
-
             }
 
         } finally {
@@ -155,5 +155,4 @@ public class AliyunOSSOperator {
             }
         }
     }
-
 }
