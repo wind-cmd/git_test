@@ -46,6 +46,13 @@ public class EmpController {
         return Result.success(pageResult);
     }
 
+    // 查询全部员工
+    @GetMapping("/list")
+    public Result list() {
+        List<Emp> empList = empService.list();
+        return Result.success(empList);
+    }
+
     /*
      * 新增员工
      */
@@ -58,7 +65,8 @@ public class EmpController {
 
     /**
      * 批量删除员工
-     * @throws Exception 
+     * 
+     * @throws Exception
      */
 
     @DeleteMapping

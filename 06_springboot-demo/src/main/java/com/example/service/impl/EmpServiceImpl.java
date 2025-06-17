@@ -56,7 +56,7 @@ public class EmpServiceImpl implements EmpService {
     public PageResult<Emp> page(EmpQueryParam empQueryParam) {
 
         PageHelper.startPage(empQueryParam.getPage(), empQueryParam.getPageSize());
-        List<Emp> rows = empMapper.list(empQueryParam);
+        List<Emp> rows = empMapper.page(empQueryParam);
 
         // 查询结果变为Page对象，获取总记录数
         Page<Emp> p = (Page<Emp>) rows;
@@ -149,5 +149,10 @@ public class EmpServiceImpl implements EmpService {
             });
         }
         empExprMapper.add(emp.getExprList());
+    }
+
+    @Override
+    public List<Emp> list() {
+        return empMapper.list();
     }
 }

@@ -15,8 +15,11 @@ import com.example.pojo.EmpQueryParam;
 public interface EmpMapper {
 
         // 条件查询员工
-        List<Emp> list(EmpQueryParam empQueryParam);
+        List<Emp> page(EmpQueryParam empQueryParam);
 
+        // 查询全部员工
+        @Select("select * from emp")
+        List<Emp> list();
         /**
          * 统计员工数量
          */

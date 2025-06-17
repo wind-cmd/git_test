@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.EmpMapper">
     <!-- 分页条件查询员工 -->
-    <select id="list" resultType="Emp">
+    <select id="page" resultType="Emp">
         select e.*, d.name as deptName
         from emp e
         LEFT JOIN dept d on e.dept_id = d.id
