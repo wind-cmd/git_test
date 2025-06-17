@@ -26,6 +26,4 @@ public interface StudentService {
     //修改学生违规次数
     void updateViolationScore(Integer id, Integer score);
 
-    List<Map<String, Object>> studentCountData();
-
 }
