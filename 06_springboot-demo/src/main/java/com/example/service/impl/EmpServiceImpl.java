@@ -17,6 +17,7 @@ import com.example.pojo.Emp;
 import com.example.pojo.EmpExpr;
 import com.example.pojo.EmpLog;
 import com.example.pojo.EmpQueryParam;
+import com.example.pojo.LoginInfo;
 import com.example.pojo.PageResult;
 import com.example.service.EmpLogService;
 import com.example.service.EmpService;
@@ -154,5 +155,20 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public List<Emp> list() {
         return empMapper.list();
+    }
+
+    // 登录接口
+    @Override
+    public LoginInfo login(Emp emp) {
+        // 1.根据用户名和密码查询员工信息
+        Emp e = empMapper.login(emp);
+
+        // 2.如果查询到员工信息，返回员工信息，否则返回null
+        if (e != null) {
+            log.info("登录成功：{}", e);
+            LoginInfo loginInfo = new LoginInfo(e.getId(), e.getUsername(), e.getName(), "");
+            return loginInfo;
+        }
+        return null;
     }
 }

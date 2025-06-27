@@ -61,4 +61,8 @@ public interface EmpMapper {
         //统计男女员工人数
         List<Map<String, Object>> empGenderData();
 
+        //登录功能
+        @Select("select id, username, name from emp where username = #{username} and password = #{password}")
+        Emp login(Emp emp);
+
 }

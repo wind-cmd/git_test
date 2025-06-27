@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
+import com.example.pojo.LoginInfo;
 import com.example.pojo.PageResult;
 
 public interface EmpService {
@@ -29,4 +30,7 @@ public interface EmpService {
 
     //查询全部员工
     List<Emp> list();
+
+    //登录功能
+    LoginInfo login(Emp emp);
 }
