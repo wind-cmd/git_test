@@ -1,7 +1,9 @@
 package com.example.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -22,6 +24,7 @@ import com.example.pojo.PageResult;
 import com.example.service.EmpLogService;
 import com.example.service.EmpService;
 import com.example.utils.AliyunOSSOperator;
+import com.example.utils.JWTUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
@@ -166,7 +169,14 @@ public class EmpServiceImpl implements EmpService {
         // 2.如果查询到员工信息，返回员工信息，否则返回null
         if (e != null) {
             log.info("登录成功：{}", e);
-            LoginInfo loginInfo = new LoginInfo(e.getId(), e.getUsername(), e.getName(), "");
+            // 生成JWT令牌
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", e.getId());
+            claims.put("username", e.getUsername());
+
+            String jwt =  JWTUtils.createToken(claims);
+            
+            LoginInfo loginInfo = new LoginInfo(e.getId(), e.getUsername(), e.getName(), jwt);
             return loginInfo;
         }
         return null;
