@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.anno.LogAnnotation;
 import com.example.pojo.Dept;
 import com.example.pojo.Result;
 import com.example.service.DeptService;
@@ -27,6 +28,7 @@ public class DeptController {
         this.deptService = deptService;
     }
     @PostMapping
+    @LogAnnotation
     public Result addDept(@RequestBody Dept dept) {
         deptService.addDept(dept);
         return Result.success();
@@ -43,12 +45,14 @@ public class DeptController {
     }
 
     @DeleteMapping
+    @LogAnnotation
     public Result deleteById(Integer id) {
         deptService.deleteById(id);
         return Result.success();
     }
 
     @PutMapping
+    @LogAnnotation
     public Result updateById(@RequestBody Dept dept) {
         logger.info("Received update request for dept: {}", dept);
         deptService.updateById(dept);

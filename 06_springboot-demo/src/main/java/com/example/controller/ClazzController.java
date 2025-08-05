@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.anno.LogAnnotation;
 import com.example.pojo.Clazz;
 import com.example.pojo.PageResult;
 import com.example.pojo.Result;
@@ -56,6 +57,7 @@ public class ClazzController {
 
     // 删除班级
     @DeleteMapping("/{id}")
+    @LogAnnotation
     public Result deleteById(@PathVariable Integer id) {
         log.info("删除班级：{}", id);
         clazzService.deleteById(id);
@@ -64,6 +66,7 @@ public class ClazzController {
 
     // 添加班级
     @PostMapping
+    @LogAnnotation
     public Result add(@RequestBody Clazz clazz) {
         log.info("新增班级：{}", clazz);
         clazzService.add(clazz);
@@ -79,6 +82,7 @@ public class ClazzController {
 
     // 修改班级信息
     @PutMapping
+    @LogAnnotation
     public Result updateById(@RequestBody Clazz clazz) {
         log.info("修改班级信息：{}", clazz);
         clazzService.updateById(clazz);

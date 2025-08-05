@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.anno.LogAnnotation;
 import com.example.pojo.PageResult;
 import com.example.pojo.Result;
 import com.example.pojo.Student;
@@ -54,6 +55,7 @@ public class StudentController {
 
     // 添加
     @PostMapping
+    @LogAnnotation
     public Result add(@RequestBody Student student) {
         log.info("新增学生：{}", student);
         studentService.add(student);
@@ -62,6 +64,7 @@ public class StudentController {
 
     // 删除多个
     @DeleteMapping("/{ids}")
+    @LogAnnotation
     public Result deleteByIds(@PathVariable List<Integer> ids) throws Exception {
         log.info("删除员工：{}", ids);
         studentService.deleteByIds(ids);
@@ -70,6 +73,7 @@ public class StudentController {
 
     // 修改
     @PutMapping
+    @LogAnnotation
     public Result update(@RequestBody Student student) {
         log.info("修改学生：{}", student);
         studentService.update(student);
@@ -77,6 +81,7 @@ public class StudentController {
     }
 
     @PutMapping("/violation/{id}/{score}")
+    @LogAnnotation
     public Result updateViolationScore(@PathVariable Integer id, @PathVariable Integer score) {
         log.info("修改学生违规分数：{}", score);
         studentService.updateViolationScore(id, score);

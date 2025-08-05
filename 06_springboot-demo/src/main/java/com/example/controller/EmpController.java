@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.anno.LogAnnotation;
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import com.example.pojo.PageResult;
@@ -57,6 +58,7 @@ public class EmpController {
      * 新增员工
      */
     @PostMapping
+    @LogAnnotation
     public Result save(@RequestBody Emp emp) throws Exception {
         log.info("新增员工{}" + emp);
         empService.save(emp);
@@ -70,6 +72,7 @@ public class EmpController {
      */
 
     @DeleteMapping
+    @LogAnnotation
     public Result deleteByIds(@RequestParam List<Integer> ids) throws Exception {
         log.info("删除员工：{}", ids);
         empService.deleteByIds(ids);
@@ -88,6 +91,7 @@ public class EmpController {
 
     // 修改员工信息
     @PutMapping
+    @LogAnnotation
     public Result updateById(@RequestBody Emp emp) {
         log.info("修改员工：{}", emp);
         empService.updateById(emp);
