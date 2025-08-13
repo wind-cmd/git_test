@@ -22,6 +22,7 @@ public class SelectAllServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
         List<Brand> brands = brandService.selectAllBrand();
+        System.out.println("查询到的品牌列表：" + brands);
         req.setAttribute("brands", brands);
         req.getRequestDispatcher("./brand.jsp").forward(req, resp);
     }
